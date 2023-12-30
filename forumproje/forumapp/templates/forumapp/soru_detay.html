@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
+   
+    <style>
+        body{
+            margin-top: 100px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f0f;
+        }
+        #fh1{
+            margin-top: 20px;
+            color: #4caf50;
+        }
+        #sub-nav{
+            display: flex;
+            justify-content: space-around;
+        }
+        #logout-btn{
+            background-color: #064d13;
+          
+        }
+
+        .container {
+            background-color: #1b1b1b; /* Slightly lighter black for container backgrounds */
+            padding: 5px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 5px 0px;
+            border-radius: 20px;
+        }
+
+        #fh3{
+            text-align: center;
+            font-size: 30px;
+            padding-top: 20px;
+            text-align: left;
+            color: #4caf50;
+        }
+        @media screen and (max-width: 600px) {
+            #fh3{
+                font-size: 17px;
+                text-align: left;
+            }
+        }
+        #fh6{
+            text-align: left;
+            font-size: 15px;
+            padding-bottom: 20px;
+            font-weight: normal;
+  
+        }
+        @media screen and (max-width: 600px) {
+            #fh6{
+                font-size: 15px;
+                text-align: left;
+                font-weight: normal;
+            }
+        }
+        #fh5{
+            display: flex;
+            justify-content: space-around;
+            text-align: left;
+            font-size: 13px;
+            padding-top: 3px;
+            width: 90px;
+            color: rgb(223, 223, 223);
+            height: 20px;
+            font-weight: normal;
+            background-color: rgb(158, 158, 158);
+            border-radius: 20px;
+
+        }
+
+
+
+
+        @media screen and (max-width: 600px) {
+            #fh5{
+                font-size: 10px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="sub-nav">
+ 
+        </div>
+        <div class="sorulist">
+            <div class="sorular">
+                <div class="container" style="background-color: rgba(255, 235, 209, 0.808); padding: 5px; box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 5px 0px; border-radius: 20px;" >
+                    <h3 id="fh3">{{sorudetay.baslik}}</h3>
+                    <hr>
+                    <h6 id="fh6">{{ sorudetay.icerik|safe }}</h6>
+                    <hr>
+                    <h6 id="fh6" style="font-size: 10px; font-style: italic; color: rgb(155, 155, 155); text-align: right;">Soran Kişi: <a href="">{{ sorudetay.kullanici|title }}</a>&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; Tarihinde: {{ sorudetay.olusturulma_zamani|date:"j F, Y" }}</h6>
+                    {% if not sorudetay.yorum.all %}
+                    <h3>Henüz bir yorum yok </h3>
+                    {% else %}
+                    {% for yorum in sorudetay.yorum.all  %}
+                    <h3 style="font-weight:normal; font-size:15px;">{{yorum.icerik}}</h3>
+                    <h3 style="font-size: 10px;">Yorum yazan: <i><a href="">{{yorum.kullaniciadi}}</a> - Tarihinde: {{yorum.olusturulma_zamani|date:"j F, Y"}}</i></h3>
+                    <hr>  
+                    {% endfor %}
+                    {% endif %}
+                    <br>
+                      
+                    <h2>Yorumlar</h2> <br><br><br>
+
+                   
+                    
+                    <a class="btn btn-outline-primary" id="fa" href="{% url "forumapp:yorumyap" sorudetay.id %}" style="text-decoration: none;">Yorum Yap</a>
+                    <a style="text-decoration: none; " class="btn btn-outline-success" href="{% url 'forumapp:soruguncelle' sorudetay.id %}">&#x270E;</a>
+                    <a style="text-decoration: none; " class="btn btn-outline-danger" href="{% url "forumapp:sorusil" sorudetay.id%}">&#x2716;</a>
+                    <a style="text-decoration: none; " class="btn btn-outline-secondary" href="{% url 'forumapp:sorular' %}">&#x21a9;</a>
+                </div> <br><br>
+                    
+                
+                </div> <br>
+            </div>
+        </div>
+        <br>
+        
+    </div>
+ 
+</body>
+</html>
+{% endblock content %}

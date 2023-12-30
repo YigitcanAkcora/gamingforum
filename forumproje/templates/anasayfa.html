@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="starter">
+    <div class="starter-content">
+        <h1 class="starter-title">En İyi Oyun Forumuna Hoş Geldiniz</h1>
+        <p class="starter-paragraph">
+            Oyun dünyasına dalın, yeni başlıkları keşfedin ve diğer oyuncularla bağlantı kurun.
+        </p>
+        <div class="starter-options">
+            <a href="{% url "forumapp:sorular" %}" class="btn btn-games">Yeni Çıkanlar</a>
+            <a href="{% url "forumapp:sorular" %}" class="btn btn-community">Topluluğa Katıl</a>
+            <a href="{% url "forumapp:sorular" %}" class="btn btn-discussions">Son Tartışmalar</a>
+        </div>
+    </div>
+</section> 
+
+<section class="gaming-news">
+   <div class="container">
+       <div class="section-head">
+           <h2 class="section-title">Oyunda Son Gelişmeler</h2>
+           <div class="section-line"></div>
+           <p class="section-description">Oyun dünyasındaki son haberleri, güncellemeleri ve incelemeleri yakalayın.</p>
+       </div>
+       <div class="gaming-options">
+       </div>
+   </div>
+</section>
+
+<section class="game-reviews">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Oyun İncelemeleri</h2>
+            <div class="section-line"></div>
+            <p class="section-description">En son oyunların derinlemesine incelemelerini okuyun ve yeni maceranızı bulun.</p>
+        </div>
+        <div class="review-options">
+        </div>
+    </div>
+</section>
+
+<section class="upcoming-events">
+    <div class="container">
+        <div class="events-head">
+            <h2 class="events-title">Yaklaşan Oyun Etkinlikleri</h2>
+            <p class="events-description">Dünya çapında gerçekleşecek son oyun etkinliklerini, turnuvaları ve buluşmaları kaçırmayın.</p>
+            <div class="events-details">
+                <a href="{% url "forumapp:sorular" %}" class="btn btn-events" style="font-size:2.5rem;">Etkinlikleri Keşfet</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gaming-forum">
+    <div class="container">
+        <div class="forum-content">
+            <h3 class="forum-title">Tartışmaya Katılın</h3>
+            <p class="forum-description">Tutkulu oyunculardan oluşan bir toplulukla bilgilerinizi, ipuçlarınızı ve deneyimlerinizi paylaşın.</p>
+            <div class="forum-actions">
+                <a href="{% url "forumapp:sorular" %}" class="btn btn-forum" style="font-size:2.5rem;">Forumları Ziyaret Et</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
