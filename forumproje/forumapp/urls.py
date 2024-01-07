@@ -10,4 +10,4 @@ urlpatterns = [
     path('sorular/<int:pk>/guncelle/', SoruUpdateView.as_view(), name="soruguncelle"),
     path('sorular/<int:pk>/sil/', SoruDeleteView.as_view(), name="sorusil"),
     path('sorular/<int:pk>/yorum/', YorumYapView.as_view(), name= 'yorumyap')
-]
+] 

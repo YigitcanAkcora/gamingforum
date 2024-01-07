@@ -13,7 +13,8 @@ urlpatterns = [
     path('profil/ekle/', profile_add_view, name="profile_add_page"),
     path('profil/edit/<slug:profil_slug>/',profile_edit, name= "profile_edit"),
     path('profil/changepass',change_password_view, name="profile_password"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
++ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 if settings.DEBUG:
